@@ -3,9 +3,10 @@
 <head>
   <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
   <meta charset="UTF-8">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://www.ucbestari.edu.my/wp-content/uploads/2021/02/ucb.png" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Borang Kehadiran dan Maklumat Pelajar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -195,7 +196,7 @@
 
 .footer-logos img {
   max-height: 50px;
-  filter: brightness(0) invert(1); /* make white-ish */
+  
 }
 
 /* social icons */
@@ -226,7 +227,7 @@
 @media (max-width: 600px) {
   .header-logos,
   .footer-logos {
-    flex-direction: column;
+    
     gap: 10px;
   }
 
@@ -238,6 +239,33 @@
     max-height: 45px;
   }
 }
+
+/* Gaya untuk ikon media sosial */
+.social-links {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .social-links a {
+    color: var(--white); /* Warna asal kelabu */
+    font-size: 1.5rem;
+    transition: transform 0.3s, color 0.3s;
+    text-decoration: none;
+  }
+
+  /* Efek apabila tetikus lalu (hover) */
+  .social-links a:hover {
+    color: var(--primary-red); /* Bertukar merah apabila hover */
+    transform: translateY(-3px);
+  }
+
+  /* Warna khusus jika mahu */
+  .fa-tiktok:hover { color: #000000; } /* TikTok hitam */
+  .fa-globe:hover { color: #0056b3; }  /* Website biru */
+  .fa-whatsapp:hover { color: #25D366; }  /* Website biru */
     </style>
 </head>
 <body>
@@ -249,14 +277,14 @@
     <img src="https://pbs.twimg.com/media/HGVAyx7bsAAhAPI?format=jpg&name=small">
   </div>
 
-  <h1>Portal Kehadiran Persatuan FEPDT</h1>
-  <p>Sila isi maklumat anda di bawah.</p>
+  <h1>Persatuan Pelajar FEPDT</h1>
+  <p>Borang Pendaftaran Ahli dan Kehadiran Mesyuarat Tahunan pada 30.3.2026</p>
 </div>
       </div>
       
       <div class="main-content">
         <div class="container">
-          <h2 class="form-title">Borang Kehadiran Mesyuarat Tahunan pada 30.3.2026</h2>
+          <h2 class="form-title">Maklumat Ahli dan Kehadiran</h2>
       
           <form id="studentForm">
             <label for="namaPelajar">Nama Penuh</label>
@@ -332,15 +360,22 @@
   </div>
 
   <div class="social-links">
-    <a href="#" target="_blank">🌐</a>
-    <a href="#" target="_blank">📘</a>
-    <a href="#" target="_blank">📸</a>
-    <a href="#" target="_blank">🎵</a>
+    <a href="https://www.ucbestari.edu.my/" target="_blank" title="Laman Web Rasmi">
+      <i class="fa-solid fa-globe"></i>
+    </a>
+    
+    <a href="https://www.tiktok.com/@fepdt_ucbestari" target="_blank" title="TikTok">
+      <i class="fa-brands fa-tiktok"></i>
+    </a>
+
+    <a href="https://chat.whatsapp.com/GMsTsZT38hw4ja4i8Bzte1?mode=ems_copy_t" target="_blank" title="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
   </div>
 
   <div class="footer-address">
-    Universiti College Bestari,<br>
-    Setiu, Terengganu, Malaysia
+    Persatuan Pelajar FEPDT,<br>
+    Universiti College Bestari
   </div>
 
 </div>

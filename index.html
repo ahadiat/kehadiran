@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://pbs.twimg.com/media/HGU2mkpawAAcP91?format=png&name=240x240" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borang Kehadiran dan Maklumat Pelajar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-red: #cc0000; /* Merah Universiti */
+      --dark-grey: #333333;
+      --light-grey: #f4f4f4;
+      --white: #ffffff;
+      --border-color: #dddddd;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light-grey);
+      color: var(--dark-grey);
+      margin: 0;
+      padding: 0; /* Penting: 0 supaya header rapat ke atas */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* --- Bahagian Header dengan Imej Latar Belakang --- */
+    .header-bg {
+      width: 100%;
+      height: 250px; /* Ketinggian imej latar belakang */
+      /* GANTIKAN URL DI BAWAH DENGAN IMEJ ANDA */
+      background-image: linear-gradient(to bottom, rgba(204, 0, 0, 0.7), rgba(51, 51, 51, 0.8)), 
+                        url('https://www.ucbestari.edu.my/wp-content/uploads/2021/02/akademik11.jpg'); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .header-content h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Supaya teks jelas */
+    }
+
+    .header-content p {
+      margin: 5px 0 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    /* -------------------------------------------------- */
+
+    .main-content {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 20px; /* Jarak antara header dan borang */
+      box-sizing: border-box;
+    }
+
+    .container {
+      background: var(--white);
+      max-width: 500px;
+      width: 100%;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: relative;
+      margin-top: -50px; /* Borang akan 'naik' sedikit bertindih dengan header */
+      z-index: 10;
+    }
+
+    h2.form-title {
+      color: var(--primary-red);
+      text-align: center;
+      margin-bottom: 25px;
+      margin-top: 0;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: #777;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary-red);
+      box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.1);
+    }
+
+    button {
+      width: 100%;
+      background-color: var(--primary-red);
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #a30000;
+    }
+
+    .contact-box {
+      margin-top: 30px;
+      padding: 15px;
+      background: #fffafa;
+      border: 1px dashed var(--primary-red);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .wa-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .footer-logo {
+      text-align: center;
+      margin-top: 30px;
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .footer-logo img {
+      max-width: 300px; /* Laraskan saiz logo */
+      height: auto;
+      filter: grayscale(20%); /* Sedikit kelabu supaya harmoni */
+    }
+    </style>
+</head>
+<body>
+    <div class="header-bg">
+        <div class="header-content">
+          <h1>Portal Kehadiran Persatuan FEPDT</h1>
+          <p>Sila isi maklumat anda di bawah.</p>
+        </div>
+      </div>
+      
+      <div class="main-content">
+        <div class="container">
+          <h2 class="form-title">Borang Kehadiran Mesyuarat Tahunan pada 30.3.2026</h2>
+      
+          <form id="studentForm">
+            <label for="namaPelajar">Nama Penuh</label>
+            <input type="text" id="namaPelajar" name="Nama Pelajar" placeholder="Contoh: Ahmad Bin Ali" required>
+      
+            <label for="noMatrik">No. Matrik</label>
+            <input type="text" id="noMatrik" name="No.Matrik" placeholder="Contoh: BBA12345" required>
+      
+            <label for="programSelect">Program Pengajian</label>
+            <select id="programSelect" name="Program" required>
+              <option value="">Pilih Program</option>
+              <optgroup label="Asasi">
+                <option value="Asasi Pengurusan">Asasi Pengurusan</option>
+              </optgroup>
+              <optgroup label="Diploma">
+                <option>Diploma Perakaunan</option>
+                <option>Diploma Pengajian Perniagaan</option>
+                <option>Diploma Pengurusan Ladang</option>
+                <option>Diploma Kejururawatan</option>
+                <option>Diploma Pendidikan Awal Kanak-kanak</option>
+                <option>Diploma Pengurusan Hotel</option>
+                <option>Diploma Pelancongan</option>
+                <option>Diploma Seni Kulinari</option>
+              </optgroup>
+              <optgroup label="Ijazah Sarjana Muda">
+                <option>Ijazah Sarjana Muda Pentadbiran Perniagaan (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Ekonomi (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Kewangan Islam (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Teknologi Maklumat (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Sains Komputer (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Syariah (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Usuluddin (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Dakwah (Kepujian)</option>
+                <option>Ijazah Sarjana Muda Pengurusan Islam (Kepujian)</option>
+              </optgroup>
+              <optgroup label="Pascasiswazah">
+                <option>Sarjana Pentadbiran Perniagaan (MBA)</option>
+                <option>Doktor Falsafah (Pengurusan & Pentadbiran)</option>
+              </optgroup>
+            </select>
+      
+            <label>Tahun Pengajian</label>
+            <span class="hint">Format: 2024/2025</span>
+            <input type="text" name="Tahun Pengajian" placeholder="202X/202X" required>
+      
+            <label>No. Telefon (WhatsApp)</label>
+            <input type="tel" name="No. HP" placeholder="01XXXXXXXX" pattern="0[0-9]{8,10}" required>
+      
+            <label>Kehadiran Mesyuarat Tahunan Fakulti pada 30.3.2026 </label>
+            <select name="Kehadiran" required>
+              <option value="">-- Sila Pilih --</option>
+              <option value="Hadir">Hadir</option>
+              <option value="Tidak Hadir">Tidak Hadir</option>
+            </select>
+      
+            <button type="submit">Hantar Kehadiran</button>
+            <p id="status" style="margin-top:10px; font-weight:bold;"></p>
+          </form>
+      
+          <div class="contact-box">
+            <p>Sila hubungi Setiausaha untuk sebarang pertanyaan:</p>
+            <a href="https://wa.me/601121982971" target="_blank" class="wa-button">
+              WhatsApp Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-logo">
+        <img src="https://www.ucbestari.edu.my/wp-content/uploads/2023/12/ucb-logo-heading-2.webp" alt="Logo Institusi">
+      </div>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyast_qRzzuo8vMLGgGy4QYtzcrV6OWpA3BfbhpVPykcNmqzk3Igfzjm4ziBRsMr7zQ/exec";
+
+    const form = document.getElementById("studentForm");
+    const status = document.getElementById("status");
+
+    // 🔹 Load saved data
+    window.onload = () => {
+      const saved = JSON.parse(localStorage.getItem("studentForm"));
+      if (saved) {
+        Object.keys(saved).forEach(key => {
+          if (form.elements[key]) {
+            form.elements[key].value = saved[key];
+          }
+        });
+      }
+    };
+
+    // 🔹 Auto save on input
+    form.addEventListener("input", () => {
+      const data = {};
+      Array.from(form.elements).forEach(el => {
+        if (el.name) data[el.name] = el.value;
+      });
+      localStorage.setItem("studentForm", JSON.stringify(data));
+    });
+
+    // 🔹 Submit
+    form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  status.innerText = "Submitting... ⏳";
+
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch(scriptURL, {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+
+    if (data.result === "duplicate") {
+      status.innerText = "⚠️ You already submitted!";
+      return;
+    }
+
+    if (data.result === "success") {
+      status.innerText = "✅ Submitted successfully!";
+      form.reset();
+      localStorage.removeItem("studentForm");
+    } else {
+      status.innerText = "❌ Masalah Server Sila Hubungi Setiausaha: Ahadiat";
+    }
+
+  } catch (error) {
+    status.innerText = "❌ Network error. Try again.";
+    console.error(error);
+  }
+});
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+<script>
+    new TomSelect("#programSelect", {
+      create: false,
+      sortField: {
+        field: "text",
+        direction: "asc"
+      },
+      placeholder: "Cari atau pilih program...",
+    });
+  </script>
+  <script>
+    const namaInput = document.getElementById("namaPelajar");
+  
+    namaInput.addEventListener("input", function () {
+      let value = this.value.toLowerCase().split(" ");
+      
+      value = value.map(word => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      });
+  
+      this.value = value.join(" ");
+    });
+  </script>
+  <script>
+    const matrikInput = document.getElementById("noMatrik");
+  
+    matrikInput.addEventListener("input", function () {
+      this.value = this.value.toUpperCase();
+    });
+  </script>
+</body>
+</html>

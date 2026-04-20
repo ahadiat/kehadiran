@@ -17,6 +17,14 @@
       --border-color: #dddddd;
     }
 
+    .wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--light-grey);
@@ -71,7 +79,7 @@
 
     .container {
       background: var(--white);
-      max-width: 500px;
+      max-width: 700px;
       width: 100%;
       padding: 30px;
       border-radius: 12px;
@@ -178,10 +186,10 @@
 /* --- FOOTER --- */
 .footer {
   width: 100%;
-  background: #222;
+  background: linear-gradient(135deg, #b30000, #000000);
   color: #fff;
   text-align: center;
-  padding: 25px 15px;
+
   margin-top: 30px;
 }
 
@@ -191,6 +199,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+  margin-top: 15px;
   margin-bottom: 15px;
 }
 
@@ -221,10 +230,17 @@
   font-size: 0.8rem;
   opacity: 0.8;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 /* --- MOBILE --- */
 @media (max-width: 600px) {
+
+  .footer {
+    width: 100%;
+  }
+
+
   .header-logos,
   .footer-logos {
     
@@ -271,15 +287,19 @@
 <body>
     <div class="header-bg">
         
-      <div class="header-content">
-  <div class="header-logos">
-    <img src="https://www.ucbestari.edu.my/wp-content/uploads/2023/12/ucb-logo-heading-2.webp">
-    <img src="https://pbs.twimg.com/media/HGVAyx7bsAAhAPI?format=jpg&name=small">
-  </div>
+      <div class="wrapper">
 
-  <h1>Persatuan Pelajar FEPDT</h1>
-  <p>Borang Pendaftaran Ahli dan Kehadiran Mesyuarat Tahunan pada 30.3.2026</p>
-</div>
+        <div class="header-content">
+          <div class="header-logos">
+            <img src="https://www.ucbestari.edu.my/wp-content/uploads/2023/12/ucb-logo-heading-2.webp">
+            <img src="https://pbs.twimg.com/media/HGVAyx7bsAAhAPI?format=jpg&name=small">
+          </div>
+        
+          <h1>Persatuan Pelajar FEPDT</h1>
+          <p>Borang Pendaftaran Ahli dan Kehadiran Mesyuarat Tahunan pada 30.3.2026</p>
+        </div>>
+      </div>
+     
       </div>
       
       <div class="main-content">
@@ -353,30 +373,33 @@
         </div>
       </div>
      <div class="footer">
+  <div class="wrapper">
+
+    <div class="footer-logos">
+      <img src="https://www.ucbestari.edu.my/wp-content/uploads/2023/12/ucb-logo-heading-2.webp">
+      <img src="https://pbs.twimg.com/media/HGVAyx7bsAAhAPI?format=jpg&name=small">
+    </div>
   
-  <div class="footer-logos">
-    <img src="https://www.ucbestari.edu.my/wp-content/uploads/2023/12/ucb-logo-heading-2.webp">
-    <img src="https://pbs.twimg.com/media/HGVAyx7bsAAhAPI?format=jpg&name=small">
+    <div class="social-links">
+      <a href="https://www.ucbestari.edu.my/" target="_blank" title="Laman Web Rasmi">
+        <i class="fa-solid fa-globe"></i>
+      </a>
+      
+      <a href="https://www.tiktok.com/@fepdt_ucbestari" target="_blank" title="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+  
+      <a href="https://chat.whatsapp.com/GMsTsZT38hw4ja4i8Bzte1?mode=ems_copy_t" target="_blank" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+    </div>
+  
+    <div class="footer-address">
+      Persatuan Pelajar FEPDT,<br>
+      Universiti College Bestari
+    </div>
   </div>
-
-  <div class="social-links">
-    <a href="https://www.ucbestari.edu.my/" target="_blank" title="Laman Web Rasmi">
-      <i class="fa-solid fa-globe"></i>
-    </a>
-    
-    <a href="https://www.tiktok.com/@fepdt_ucbestari" target="_blank" title="TikTok">
-      <i class="fa-brands fa-tiktok"></i>
-    </a>
-
-    <a href="https://chat.whatsapp.com/GMsTsZT38hw4ja4i8Bzte1?mode=ems_copy_t" target="_blank" title="WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-  </div>
-
-  <div class="footer-address">
-    Persatuan Pelajar FEPDT,<br>
-    Universiti College Bestari
-  </div>
+ 
 
 </div>
      

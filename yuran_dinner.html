@@ -345,11 +345,11 @@
                 <input
                     type="file"
                     id="receiptFile"
-                    accept="image/*,.pdf">
+                    accept="image/*,.pdf"
+                    onchange="scanReceipt()
+                  >
             
-                <button type="button" onclick="scanReceipt()">
-                    Scan Resit
-                </button>
+               
             
                 <div class="preview-container">
                     <img id="previewImage" style="display:none;">

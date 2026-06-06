@@ -501,6 +501,8 @@ for (const pattern of amountPatterns) {
         break;
     }
 }
+
+            
             
  function extractReference(cleanText) {
 
@@ -544,7 +546,7 @@ for (const pattern of amountPatterns) {
                         amount;
             
                     document.getElementById("reference").textContent =
-                        account;
+                        extractReference(cleanText);
                     
               
             

@@ -359,8 +359,8 @@
             
                 <div class="result-card">
                     <p><strong>💰 Jumlah Bayaran:</strong> <span id="amount">-</span></p>
-                    <p><strong>🏦 Nama Akaun:</strong> <span id="sender">-</span></p>
-                    <p><strong>🏦 No Akaun:</strong> <span id="account">-</span></p>
+                    <p><strong>🏦 No. Rujukan:</strong> <span id="reference">-</span></p>
+                   
                 </div>
             
                 <details>
@@ -502,83 +502,51 @@ for (const pattern of amountPatterns) {
     }
 }
             
-                  // =====================
-// CARI AKAUN PENGIRIM
-// =====================
+ function extractReference(cleanText) {
 
-let account = "Tidak dijumpai";
+    const patterns = [
 
-const accountPatterns = [
+        // CIMB OCTO
+        /OCTO\s*Reference\s*No\.?\s*([A-Z0-9]+)/i,
 
-    // Maybank
-    /From\s*Account\s*:?\s*([0-9*]+)/i,
+        // DuitNow
+        /DuitNow\s*Reference\s*No\.?\s*([A-Z0-9]+)/i,
 
-    // CIMB
-    /Source\s*Account\s*:?\s*([0-9*]+)/i,
+        // Maybank
+        /Reference\s*ID\s*([A-Z0-9]+)/i,
 
-    // Generic
-    /Account\s*Number\s*:?\s*([0-9*]+)/i,
+        // Generic
+        /Transaction\s*ID\s*:?\s*([A-Z0-9]+)/i,
 
-    /Account\s*:?\s*([0-9*]+)/i,
+        /Transaction\s*Reference\s*:?\s*([A-Z0-9]+)/i,
 
-    /From\s*A\/C\s*:?\s*([0-9*]+)/i,
+        /Reference\s*Number\s*:?\s*([A-Z0-9]+)/i,
 
-    /A\/C\s*No\s*:?\s*([0-9*]+)/i,
+        /Reference\s*No\.?\s*:?\s*([A-Z0-9]+)/i,
 
-    /Debited\s*Account\s*:?\s*([0-9*]+)/i,
+        /Ref\s*No\.?\s*:?\s*([A-Z0-9]+)/i,
 
-    /Sender\s*Account\s*:?\s*([0-9*]+)/i,
+        /Ref\s*:?\s*([A-Z0-9]+)/i
+    ];
 
-    /Transfer\s*From\s*:?\s*([0-9*]+)/i,
+    for (const pattern of patterns) {
+        const match = cleanText.match(pattern);
 
-    // OCR kadang buang ruang
-    /AccountNumber\s*([0-9*]+)/i,
-
-    /SourceAccount\s*([0-9*]+)/i
-];
-
-for (const pattern of accountPatterns) {
-    const match = text.match(pattern);
-
-    if (match) {
-        account = match[1];
-        break;
+        if (match) {
+            return match[1];
+        }
     }
+
+    return "Tidak dijumpai";
 }
-
-let sender = "Tidak dijumpai";
-
-const senderPatterns = [
-
-    /Sender\s*Name\s*:?\s*([A-Z\s]+)/i,
-
-    /Account\s*Holder\s*:?\s*([A-Z\s]+)/i,
-
-    /From\s*:?\s*([A-Z\s]+)/i,
-
-    /Payer\s*:?\s*([A-Z\s]+)/i,
-
-    /Transferred\s*By\s*:?\s*([A-Z\s]+)/i
-];
-
-for (const pattern of senderPatterns) {
-
-    const match = text.match(pattern);
-
-    if (match) {
-        sender = match[1].trim();
-        break;
-    }
-}
-            
+  
                     document.getElementById("amount").textContent =
                         amount;
             
-                    document.getElementById("account").textContent =
+                    document.getElementById("reference").textContent =
                         account;
                     
-                    document.getElementById("account").textContent =
-                        sender;
+              
             
                     document.getElementById("loading").innerHTML =
                         "✅ Resit berjaya diproses";

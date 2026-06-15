@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bayaran Dinner FEPDT</title>
+<link rel="icon" href="https://www.ucbestari.edu.my/wp-content/uploads/2021/02/ucb.png" type="image/x-icon">
 <!-- Memasukkan API SoundCloud Widget secara rasmi -->
 <script src="https://w.soundcloud.com/player/api.js"></script>
 <style>
@@ -16,7 +17,8 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         min-height: 100vh;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
         overflow-x: hidden;
     }
@@ -29,6 +31,36 @@
         box-sizing: border-box;
     }
 
+    /* Gaya Kandungan Header (Logo) */
+    .header-content {
+        width: 100%;
+        max-width: 500px;
+        padding: 20px 20px 0 20px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .header-logos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        background: rgba(25, 15, 50, 0.4);
+        padding: 15px;
+        border-radius: 12px;
+        border: 1px solid rgba(138, 43, 226, 0.3);
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-logos img {
+        height: auto;
+        max-height: 55px; /* Menyeragamkan ketinggian logo supaya seimbang */
+        max-width: 45%;
+        object-fit: contain;
+        filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.5));
+    }
+
     /* Kotak Borang Magis */
     #form-wrapper {
         background: rgba(25, 15, 50, 0.75);
@@ -38,6 +70,7 @@
         padding: 30px;
         backdrop-filter: blur(10px);
         text-align: center;
+        margin-top: 20px;
     }
 
     h2 {
@@ -136,7 +169,7 @@
         transform: scale(1.1) rotate(15deg);
     }
 
-    img {
+    .qr-code-img {
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(0,0,0,0.5);
         max-width: 100%;
@@ -205,6 +238,14 @@
 <!-- Container untuk bintang jatuh -->
 <div class="star-container" id="starContainer"></div>
 
+<!-- Bahagian Logo Header -->
+<div class="header-content">
+    <div class="header-logos">
+        <img src="https://www.ucbestari.edu.my/wp-content/uploads/2023/12/ucb-logo-heading-2.webp" alt="UCB Logo">
+        <img src="https://pbs.twimg.com/media/HGVAyx7bsAAhAPI?format=jpg&name=small" alt="FEPDT Logo">
+    </div>
+</div>
+
 <!-- Butang Terapung Bulat (Bawah Kanan) -->
 <button class="btn-magic-float" onclick="triggerMagic()" title="Aktifkan Sihir & Muzik">✨</button>
 
@@ -236,6 +277,7 @@
         <br><br>
 
         <img
+            class="qr-code-img"
             src="https://pbs.twimg.com/media/HKHtge1aQAArYiK?format=jpg&name=medium"
             alt="QR Code"
             width="300"
@@ -303,7 +345,6 @@ const WHATSAPP_LINK = "https://wa.me/60123456789?text=Saya%20ingin%20bertanya%20
 const WEBAPP = "https://script.google.com/macros/s/AKfycbzUbMDYivN-DdrNRmXaSi7fUgWV99yo6pyW3AEzmXA0hTFAGEHcgRjuVKxAOT6PCACjhQ/exec";
 
 let rainInterval = null;
-// Menyambungkan JavaScript dengan Widget SoundCloud
 const widget = SC.Widget(document.getElementById('sc-player'));
 
 function createStar() {
@@ -344,15 +385,11 @@ function startStarRain() {
     }, 5000); 
 }
 
-// Fungsi gabungan: Hujan Bintang + Main Muzik
 function triggerMagic() {
     startStarRain();
-    
-    // Memainkan lagu melalui SoundCloud API
     widget.play();
 }
 
-// Auto-aktifkan hujan bintang semasa mula masuk website (Nota: Browser moden menyekat auto-play muzik tanpa interaksi user, jadi muzik hanya akan bermula apabila butang ditekan)
 window.addEventListener('DOMContentLoaded', () => {
     setTimeout(startStarRain, 500); 
 });
@@ -369,7 +406,7 @@ function showSuccessPage() {
             </a>
         </div>
     `;
-    triggerMagic(); // Mainkan muzik dan bintang apabila berjaya hantar borang
+    triggerMagic(); 
 }
 
 function submitData(){
